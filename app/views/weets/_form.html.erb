@@ -1,22 +1,9 @@
-<%= form_with(model: weet, local: true) do |form| %>
-  <% if weet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(weet.errors.count, "error") %> prohibited this weet from being saved:</h2>
-
-      <ul>
-        <% weet.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<%= simple_form_for(@weet) do |f| %>
+  <%= f.error_notification %>
+    <div class="field">
+      <div class="control">
+        <%= f.input :weet, label: "Tweeet about it", input_html: { class: "textarea "}, wrapper: false, label_html: {class: "label"}, placeholder: "Compose a new weet...", autofocus: true %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :weet %>
-    <%= form.text_area :weet %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.button :submit, class: "button is-info" %>
 <% end %>

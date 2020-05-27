@@ -4,7 +4,8 @@ class WeetsController < ApplicationController
   # GET /weets
   # GET /weets.json
   def index
-    @weets = Weet.all
+    @weets = Weet.all.order("created_at DESC")
+    @weet = Weet.new
   end
 
   # GET /weets/1

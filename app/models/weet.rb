@@ -1,0 +1,2 @@
+class Weet < ApplicationRecord
+end

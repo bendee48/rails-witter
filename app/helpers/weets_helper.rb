@@ -1,0 +1,2 @@
+module WeetsHelper
+end

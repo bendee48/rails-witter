@@ -1,5 +1,6 @@
 class WeetsController < ApplicationController
   before_action :set_weet, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /weets
   # GET /weets.json
@@ -15,7 +16,7 @@ class WeetsController < ApplicationController
 
   # GET /weets/new
   def new
-    @weet = Weet.new
+    @weet = current_user.weets.build
   end
 
   # GET /weets/1/edit
@@ -25,7 +26,7 @@ class WeetsController < ApplicationController
   # POST /weets
   # POST /weets.json
   def create
-    @weet = Weet.new(weet_params)
+    @weet = current_user.weets.build(weet_params)
 
     respond_to do |format|
       if @weet.save
